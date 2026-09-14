@@ -1,0 +1,13 @@
+* text=auto eol=lf
+
+*.ipynb  text eol=lf
+*.csv    text eol=lf
+
+*.pptx   binary
+*.xlsx   binary
+*.png    binary
+*.jpg    binary
+
+# Keep notebooks and lockfiles out of diff noise and language stats
+*.ipynb        linguist-documentation
+pnpm-lock.yaml linguist-generated
