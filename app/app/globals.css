@@ -1,0 +1,171 @@
+@import 'tailwindcss';
+@import 'shadcn/tailwind.css';
+
+@theme inline {
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, 'SFMono-Regular', monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-panel: var(--panel);
+  --color-panel-foreground: var(--panel-foreground);
+  --color-panel-muted: var(--panel-muted);
+  --color-panel-hair: var(--panel-hair);
+  --color-panel-active: var(--panel-active);
+  --color-statusbar: var(--statusbar);
+  --color-statusbar-foreground: var(--statusbar-foreground);
+
+  --color-ok: var(--ok);
+  --color-warn: var(--warn);
+  --color-bad: var(--bad);
+  --color-pos: var(--pos);
+  --color-neg: var(--neg);
+  --color-info: var(--info);
+
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 2px;
+  --radius-xl: 2px;
+}
+
+:root {
+  color-scheme: light;
+
+  --background: #f2f4f6;
+  --foreground: #14181d;
+
+  --card: #ffffff;
+  --card-foreground: #14181d;
+  --popover: #ffffff;
+  --popover-foreground: #14181d;
+
+  /* primary brand navy */
+  --primary: #073763;
+  --primary-foreground: #f4f7fa;
+
+  --secondary: #e7ebef;
+  --secondary-foreground: #1f262d;
+
+  --muted: #eaedf0;
+  --muted-foreground: #5c6773;
+
+  --accent: #dfe6ec;
+  --accent-foreground: #0a2740;
+
+  --destructive: #9a2f2f;
+  --destructive-foreground: #f7f2f2;
+
+  --border: #cfd6dd;
+  --input: #cfd6dd;
+  --ring: #073763;
+
+  /* panel chrome (sidebar / status bar) */
+  --panel: #0e1b28;
+  --panel-foreground: #d6e0ea;
+  --panel-muted: #7c8b9c;
+  --panel-hair: #1e2f3f;
+  --panel-active: #16324a;
+  --statusbar: #0a141d;
+  --statusbar-foreground: #aeb9c4;
+
+  /* semantic status / direction — muted, desaturated */
+  --ok: #2f6d4f;
+  --warn: #8a6416;
+  --bad: #9a2f2f;
+  --pos: #2f6d4f;
+  --neg: #9a2f2f;
+  --info: #1f5a86;
+
+  /* chart series — desaturated blues/grays */
+  --chart-1: #073763;
+  --chart-2: #3f7ba6;
+  --chart-3: #7d9bb2;
+  --chart-4: #b0483a;
+  --chart-5: #5c6773;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    outline-color: var(--ring);
+  }
+  html,
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: 'tnum' 1, 'cv01' 1;
+  }
+  body {
+    font-size: 12px;
+    line-height: 1.4;
+  }
+  /* Tighten default control chrome toward information density. */
+  ::selection {
+    background: #073763;
+    color: #f4f7fa;
+  }
+}
+
+@layer utilities {
+  /* Tabular monospace numerals for aligned numeric columns. */
+  .num {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: 'tnum' 1;
+  }
+  .hairline {
+    border-color: var(--border);
+  }
+  .dense-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: #9aa6b2 transparent;
+  }
+  .dense-scroll::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  .dense-scroll::-webkit-scrollbar-thumb {
+    background: #9aa6b2;
+    border-radius: 0;
+  }
+  /* Respect the device notch / home indicator for bottom-anchored chrome. */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .h-safe-bottom {
+    height: env(safe-area-inset-bottom, 0px);
+  }
+}
+
+/* On touch/phone widths, bump form controls to 16px so iOS Safari does not
+   zoom the viewport on focus, and keep the desktop density untouched above. */
+@media (max-width: 767px) {
+  input:not([type='checkbox']):not([type='radio']):not([type='range']),
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
