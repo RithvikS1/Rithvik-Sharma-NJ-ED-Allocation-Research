@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+title: >-
+  Equity-Weighted Physician Allocation Across New Jersey
+  Emergency Departments
+message: If you use this work, please cite it as below.
+type: software
+authors:
+  - given-names: Rithvik
+    family-names: Sharma
+abstract: >-
+  An M/M/c queueing model of New Jersey emergency departments with an
+  inverse solver that recovers each hospital's implied physician capacity
+  from observed CMS wait times, and an equity-weighted greedy allocation
+  algorithm that distributes additional physician capacity across the
+  network while accounting for county-level CDC Social Vulnerability Index
+  scores.
+keywords:
+  - operations research
+  - queueing theory
+  - health equity
+  - emergency department
+  - resource allocation
+license: MIT
